@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.border.TitledBorder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/someServlet")
-public class SomeServlet extends HttpServlet {
+public class BookEpedia extends HttpServlet {
 
     private int counter;
 
@@ -20,16 +21,20 @@ public class SomeServlet extends HttpServlet {
         counter++;
 
         //get input as string
-        String input1 = request.getParameter("input1");
-        String input2 = request.getParameter("input2");
+        String Author = request.getParameter("author");
+        String Title = request.getParameter("title");
+        String ISBN = request.getParameter("isbn");
+        Integer PublishingYear = Integer.valueOf(request.getParameter("publishing year"));
 
-        System.out.println(input1 + input2);
+        System.out.println(Author + Title + PublishingYear);
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.println("<h2>Are you sure? </h2>");
-        out.println("input1 - <b>" + input1 + "</b><br/>");
-        out.println("input2 - <b>" + input2 + "</b><br/>");
+        out.println("<h2>BookEpedia </h2>");
+        out.println("author - <b>" + Author + "</b><br/>");
+        out.println("title - <b>" + Title + "</b><br/>");
+        out.println("isbn - <b>" + ISBN + "</b><br/>");
+        out.println("publishingyear - <b>" + PublishingYear + "</b><br/>");
         out.println("<a href='/'>Go Back</a>");
 
         // finished writing, send to browser

@@ -1,0 +1,16 @@
+header {
+    padding: 10px;
+    min-height: 45px;
+           }
+img {
+    height: 100px;
+    width: 2000px;
+    opacity: 0.5;
+}
+
+h2 {
+    font-family: Glegoo;
+    font-size: 40px;
+    background-color: #f0f8ff;
+
+}

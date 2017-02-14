@@ -1,19 +1,26 @@
 <html>
 <head>
-
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 
 <body>
-    <h2>A servlet example!</h2>
+<header>
+    <img src="https://henryehooper.files.wordpress.com/2014/09/antique-books-half-size-image.jpg">
+        <h2 >BookEpedia</h2>
 
-    <form action="someServlet" method="post">
-        Input1:<input type="text" name="input1"/><br />
-        Input2:<input type="text" name="input2"/><br />
+
+</header>
+
+    <form action="BookEpedia" method="post">
+        Author: <input type="text" name="author"/><br />
+        Title: <input type="text" name="title"/><br />
+        ISBN: <input type="text" name="isbn"/><br />
+        Publishing year:<input type="text" name="publishing year"/><br />
         <input type="submit" value="Submit"/>&nbsp;
     </form>
 
-    <form action="someServlet" method="get">
+    <form action="BookEpedia" method="get">
         <input type="submit" value="GetInfo"/>
     </form>
 </body>
