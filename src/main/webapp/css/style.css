@@ -11,6 +11,11 @@ img {
 h2 {
     font-family: Glegoo;
     font-size: 40px;
-    background-color: #f0f8ff;
+    /*background-color: #f0f8ff;*/
 
+    background: #f0f8ff url("https://henryehooper.files.wordpress.com/2014/09/antique-books-half-size-image.jpg");
+    background-size:cover;
+    min-height: 150px;
+    color: #ffffff;
+    padding: 20px;
 }
