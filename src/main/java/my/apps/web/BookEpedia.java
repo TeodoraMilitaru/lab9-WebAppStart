@@ -29,15 +29,16 @@ public class BookEpedia extends HttpServlet {
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.println("<h2>BookEpedia </h2>");
+        out.println("<h3>BookEpedia </h3>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("<b>" + book.toString() +  "</b><br />");
 
         /*out.println("author - <b>" + book + "</b><br/>");
         out.println("title - <b>" + Title + "</b><br/>");
         out.println("isbn - <b>" + ISBN + "</b><br/>");
         out.println("publishingyear - <b>" + PublishingYear + "</b><br/>");*/
-        
-        out.println("<a href='/'>Go Back</a>");
+
+       out.println("<a href='/'>Go Back</a>");
 
 
         // finished writing, send to browser
