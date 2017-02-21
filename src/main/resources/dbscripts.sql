@@ -1,10 +1,12 @@
-CREATE TABLE someTable (
+CREATE TABLE BookEpedia (
     id bigserial NOT NULL PRIMARY KEY,
     Author character(40),
     Title character(40) ,
     ISBN int not null,
     PublishingYear int not null
     );
+
+    INSERT INTO book( author, title, isbn, publishingyear) VALUES ('George RR Martin', 'Game of Thrones', '1234', '2008')
 
 /*CREATE TABLE someOtherTable (
     idSomeOtherTable bigserial NOT NULL PRIMARY KEY,
