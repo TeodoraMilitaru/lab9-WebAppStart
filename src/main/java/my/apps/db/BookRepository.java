@@ -33,11 +33,11 @@ public class BookRepository {
 
         // 4. execute a prepared statement
         int rowsInserted = pSt.executeUpdate();
-        System.out.println("Inserted " + rowsInserted + " rows.")
+        System.out.println("Inserted " + rowsInserted + " rows.");
 
         // 5. close the objects
         pSt.close();
         conn.close();
     }
 }
-}
+
