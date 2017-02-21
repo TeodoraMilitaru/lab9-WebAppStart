@@ -2,10 +2,10 @@ package my.apps.db;
 
 import my.apps.web.Book;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by teodoramilitaru on 2/21/17.
@@ -39,5 +39,39 @@ public class BookRepository {
         pSt.close();
         conn.close();
     }
+    public List<Book> read() throws ClassNotFoundException, SQLException {
+        // 1. load the driver
+        Class.forName("org.postgresql.Driver");
+
+        // 2. obtain a connection
+        Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+        // 3. create a query statement
+        Statement st = conn.createStatement();
+
+        // 4. execute a query
+        ResultSet rs = st.executeQuery("SELECT author, title, isbn, publishingyear FROM article");
+
+        // 5. iterate the result set and print the values
+        List<Book> books = new ArrayList<>();
+        while (rs.next()) {
+            Book book = new Book(
+                    rs.getString("author"),
+                    rs.getString("title"),
+                    rs.getString("isbn"),
+                    rs.getInt("publishingyear")
+
+            );
+            books.add(book);
+        }
+        return books;
+
+        // 6. close the objects
+        rs.close();
+        st.close();
+        conn.close();
+        return books;
+    }
+
 }
 
