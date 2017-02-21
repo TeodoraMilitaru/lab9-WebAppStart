@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/someServlet")
+@WebServlet("/BookEpedia")
 public class BookEpedia extends HttpServlet {
 
     private int counter;
@@ -24,7 +24,7 @@ public class BookEpedia extends HttpServlet {
         String Author = request.getParameter("author");
         String Title = request.getParameter("title");
         String ISBN = request.getParameter("isbn");
-        Integer PublishingYear = Integer.valueOf(request.getParameter("publishing year"));
+        Integer PublishingYear = Integer.valueOf(request.getParameter("publishingyear"));
 
         System.out.println(Author + Title + PublishingYear);
         // write results to response
