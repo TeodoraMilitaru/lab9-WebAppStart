@@ -3,15 +3,15 @@ package my.apps.web;
 /**
  * Created by teodoramilitaru on 2/21/17.
  */
-public class Books {
+public class Book {
 
     private String author;
     private String title;
     private String isbn;
-    private String publishingyear;
+    private Integer publishingyear;
 
 
-    public Books(String author, String title, String isbn, String publishingyear) {
+    public Book(String author, String title, String isbn, Integer publishingyear) {
         this.author = author;
         this.title = title;
         this.isbn = isbn;
@@ -30,14 +30,14 @@ public class Books {
         return isbn;
     }
 
-    public String getPublishingyear() {
+    public Integer getPublishingyear() {
         return publishingyear;
     }
 
 
     @Override
     public String toString() {
-        return "Books{" +
+        return "Book{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
