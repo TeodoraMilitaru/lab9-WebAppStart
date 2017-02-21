@@ -1,4 +1,5 @@
 package my.apps.web;
+import my.apps.db.BookRepository;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,11 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 @WebServlet("/BookEpedia")
 public class BookEpedia extends HttpServlet {
 
     private int counter;
+
+    private BookRepository articleRepository = new BookRepository();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +36,18 @@ public class BookEpedia extends HttpServlet {
         out.println("<h3>BookEpedia </h3>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("<b>" + book.toString() +  "</b><br />");
+
+        try {
+            out.println("<h3>New article...</h3>");
+            articleRepository.insert(book);
+            out.println("<b>" + book.toString() +  "</b><br />");
+        } catch (ClassNotFoundException e) {
+            out.println("<div class='error'><b>Unable initialize database connection<b></div>");
+        } catch (SQLException e) {
+            out.println("<div class='error'><b>Unable to write to database!<b></div>");
+        }
+
+
 
         /*out.println("author - <b>" + book + "</b><br/>");
         out.println("title - <b>" + Title + "</b><br/>");
