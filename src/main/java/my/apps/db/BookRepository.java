@@ -64,7 +64,7 @@ public class BookRepository {
             );
             books.add(book);
         }
-        return books;
+
 
         // 6. close the objects
         rs.close();

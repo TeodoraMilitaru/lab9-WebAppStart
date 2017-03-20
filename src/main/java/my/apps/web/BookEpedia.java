@@ -69,6 +69,7 @@ public class BookEpedia extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<head>");
         out.println("<title> Get count </title>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("</head>");
 
         out.println("<h2>Get count</h2>");
