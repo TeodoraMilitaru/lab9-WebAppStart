@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet("/BookEpedia")
 public class BookEpedia extends HttpServlet {
 
     private int counter;
 
-    private BookRepository articleRepository = new BookRepository();
+    private BookRepository bookRepository = new BookRepository();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,8 +39,8 @@ public class BookEpedia extends HttpServlet {
         out.println("<b>" + book.toString() +  "</b><br />");
 
         try {
-            out.println("<h3>New article...</h3>");
-            articleRepository.insert(book);
+            out.println("<h3>New book...</h3>");
+            bookRepository.insert(book);
             out.println("<b>" + book.toString() +  "</b><br />");
         } catch (ClassNotFoundException e) {
             out.println("<div class='error'><b>Unable initialize database connection<b></div>");
@@ -77,7 +78,15 @@ public class BookEpedia extends HttpServlet {
         try {
             out.println("<h2>Get count</h2>");
             out.println(counter);
-            articleRepository.read();
+
+         /*   bookRepository.read();*/
+
+            List<Book> books = bookRepository.read();
+            for (Book book : books) {
+                out.println(book.toString());
+            }
+
+
         } catch (ClassNotFoundException e) {
             out.println("<div class='error'><b>Unable initialize database connection<b></div>");
         } catch (SQLException e) {
