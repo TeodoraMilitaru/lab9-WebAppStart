@@ -31,6 +31,7 @@ public class BookEpedia extends HttpServlet {
 
 
         System.out.println(Author + Title + PublishingYear);
+
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
@@ -55,7 +56,9 @@ public class BookEpedia extends HttpServlet {
         out.println("isbn - <b>" + ISBN + "</b><br/>");
         out.println("publishingyear - <b>" + PublishingYear + "</b><br/>");*/
 
-       out.println("<a href='/'>Go Back</a>");
+       //out.println("<a href='/'>Go Back</a>");
+
+        addGoBack(out);
 
 
         // finished writing, send to browser
@@ -63,11 +66,16 @@ public class BookEpedia extends HttpServlet {
 
     }
 
+    private void addGoBack(PrintWriter out) {
+        out.println("<a href='/'>Go Back</a>");
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         counter++;
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
+
         out.println("<head>");
         out.println("<title> Get count </title>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
@@ -92,6 +100,7 @@ public class BookEpedia extends HttpServlet {
         } catch (SQLException e) {
             out.println("<div class='error'><b>Unable to write to database! " +  e.getMessage() +"<b></div>");
         }
+        addGoBack(out);
         out.close();
     }
 
