@@ -77,22 +77,45 @@ public class BookEpedia extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         out.println("<head>");
-        out.println("<title> Get count </title>");
+        //out.println("<title> Get count </title>");
+        out.println("<title> Books </title>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("</head>");
 /*
         out.println("<h2>Get count</h2>");
         out.println(counter);*/
         try {
-            out.println("<h2>Get count</h2>");
-            out.println(counter);
+            /*out.println("<h2>Get count</h2>");
+            out.println(counter);*/
+            out.println("<h3>Books...</h3>");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<th>Id</th>");
+            out.println("<th>Author</th>");
+            out.println("<th>Title</th>");
+            out.println("<th>ISBN</th>");
+            out.println("<th>Publishing Year</th");
+            out.println("</tr>");
+
+
+
 
          /*   bookRepository.read();*/
 
             List<Book> books = bookRepository.read();
             for (Book book : books) {
-                out.println(book.toString());
+                //out.println(book.toString());
+                out.println("<tr>");
+                out.println("<td>"+book.getId()+"</td>");
+                out.println("<td>"+book.getAuthor()+"</td>");
+                out.println("<td>"+book.getTitle()+"</td");
+                out.println("<td>"+book.getIsbn()+"</td>");
+                out.println("<td>"+book.getPublishingyear()+"</td>");
+                out.println("</tr>");
+
             }
+
+            out.println("</table>");
 
 
         } catch (ClassNotFoundException e) {
