@@ -5,6 +5,7 @@ package my.apps.web;
  */
 public class Book {
 
+    private Long id;
     private String author;
     private String title;
     private String isbn;
@@ -19,19 +20,33 @@ public class Book {
     }
 
     public String getAuthor() {
+
         return author;
     }
 
     public String getTitle() {
+
         return title;
     }
 
     public String getIsbn() {
+
         return isbn;
     }
 
     public Integer getPublishingyear() {
+
         return publishingyear;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
     }
 
 

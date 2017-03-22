@@ -50,7 +50,8 @@ public class BookRepository {
         Statement st = conn.createStatement();
 
         // 4. execute a query
-        ResultSet rs = st.executeQuery("SELECT author, title, isbn, publishingyear FROM article");
+        //ResultSet rs = st.executeQuery("SELECT author, title, isbn, publishingyear FROM book");
+        ResultSet rs = st.executeQuery("SELECT id, author, title, isbn, publishingyear FROM book");
 
         // 5. iterate the result set and print the values
         List<Book> books = new ArrayList<>();
@@ -62,6 +63,7 @@ public class BookRepository {
                     rs.getInt("publishingyear")
 
             );
+            book.setId(rs.getLong("id"));
             books.add(book);
         }
 
