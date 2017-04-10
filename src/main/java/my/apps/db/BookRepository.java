@@ -13,11 +13,25 @@ import java.util.List;
 public class BookRepository {
 
 
-    final static String URL = "jdbc:postgresql://IP:5432/test";
+    final static String URL = "jdbc:postgresql://54.93.65.5:5432/QA6_Teodora";
     final static String USERNAME = "fasttrackit_dev";
     final static String PASSWORD = "fasttrackit_dev";
 
-    public void insert(Book book) throws ClassNotFoundException, SQLException {
+    public static void main(String args[]) {
+        Book book = new Book("teo","teo1",1234,1990);
+
+        try {
+            insert(book);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void insert(Book book) throws ClassNotFoundException, SQLException {
         // 1. load the driver
         Class.forName("org.postgresql.Driver");
 
@@ -25,10 +39,10 @@ public class BookRepository {
         Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         // 3. create a query statement
-        PreparedStatement pSt = conn.prepareStatement("INSERT INTO book( author, title, isbn, publishingyear) VALUES (?,?, ?, ?)");
+        PreparedStatement pSt = conn.prepareStatement("INSERT INTO BookEpedia( author, title, isbn, publishingyear) VALUES (?,?, ?, ?)");
         pSt.setString(1, book.getAuthor());
         pSt.setString(2, book.getTitle());
-        pSt.setString(3, book.getIsbn());
+        pSt.setInt(3, book.getIsbn());
         pSt.setInt(4, book.getPublishingyear());
 
         // 4. execute a prepared statement
@@ -50,8 +64,7 @@ public class BookRepository {
         Statement st = conn.createStatement();
 
         // 4. execute a query
-        //ResultSet rs = st.executeQuery("SELECT author, title, isbn, publishingyear FROM book");
-        ResultSet rs = st.executeQuery("SELECT id, author, title, isbn, publishingyear FROM book");
+        ResultSet rs = st.executeQuery("SELECT id, author, title, isbn, publishingyear FROM BookEpedia");
 
         // 5. iterate the result set and print the values
         List<Book> books = new ArrayList<>();
@@ -59,7 +72,7 @@ public class BookRepository {
             Book book = new Book(
                     rs.getString("author"),
                     rs.getString("title"),
-                    rs.getString("isbn"),
+                    rs.getInt("isbn"),
                     rs.getInt("publishingyear")
 
             );

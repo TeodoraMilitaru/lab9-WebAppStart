@@ -24,13 +24,16 @@ public class BookEpedia extends HttpServlet {
         //get input as string
         String Author = request.getParameter("author");
         String Title = request.getParameter("title");
-        String ISBN = request.getParameter("isbn");
+        Integer ISBN;
+        if (request.getParameter("isbn") != null) {
+             ISBN = Integer.parseInt(request.getParameter("isbn"));
+        }
+        else {
+             ISBN = null;
+        }
         Integer PublishingYear = Integer.valueOf(request.getParameter("publishingyear"));
         Book book = new Book(Author, Title, ISBN, PublishingYear);
 
-
-
-        System.out.println(Author + Title + PublishingYear);
 
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
@@ -90,7 +93,7 @@ public class BookEpedia extends HttpServlet {
             out.println("<h3>Books...</h3>");
             out.println("<table>");
             out.println("<tr>");
-            out.println("<th>Id</th>");
+            out.println("<th>#</th>");
             out.println("<th>Author</th>");
             out.println("<th>Title</th>");
             out.println("<th>ISBN</th>");
@@ -101,16 +104,16 @@ public class BookEpedia extends HttpServlet {
 
 
          /*   bookRepository.read();*/
-
+            Integer index = 0;
             List<Book> books = bookRepository.read();
             for (Book book : books) {
-                //out.println(book.toString());
+                index++;
                 out.println("<tr>");
-                out.println("<td>"+book.getId()+"</td>");
+                out.println("<td>"+index.toString()+"</td>");
                 out.println("<td>"+book.getAuthor()+"</td>");
-                out.println("<td>"+book.getTitle()+"</td");
-                out.println("<td>"+book.getIsbn()+"</td>");
-                out.println("<td>"+book.getPublishingyear()+"</td>");
+                out.println("<td>"+book.getTitle()+"</td>");
+                out.println("<td>"+book.getIsbn().toString()+"</td>");
+                out.println("<td>"+book.getPublishingyear().toString()+"</td>");
                 out.println("</tr>");
 
             }

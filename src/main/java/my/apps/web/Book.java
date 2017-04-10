@@ -8,47 +8,55 @@ public class Book {
     private Long id;
     private String author;
     private String title;
-    private String isbn;
+    private Integer isbn;
     private Integer publishingyear;
 
-
-    public Book(String author, String title, String isbn, Integer publishingyear) {
+    public Book(String author, String title, Integer isbn, Integer publishingyear) {
         this.author = author;
         this.title = title;
         this.isbn = isbn;
         this.publishingyear = publishingyear;
     }
 
-    public String getAuthor() {
+    public Long getId() {
+        return id;
+    }
 
+    public String getAuthor() {
         return author;
     }
 
     public String getTitle() {
-
         return title;
     }
 
-    public String getIsbn() {
-
+    public Integer getIsbn() {
         return isbn;
     }
 
     public Integer getPublishingyear() {
-
         return publishingyear;
     }
 
-    public Long getId() {
-
-        return id;
-    }
-
     public void setId(Long id) {
-
         this.id = id;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setIsbn(Integer isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setPublishingyear(Integer publishingyear) {
+        this.publishingyear = publishingyear;
+    }
 
     @Override
     public String toString() {

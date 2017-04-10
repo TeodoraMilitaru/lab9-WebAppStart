@@ -16,7 +16,7 @@ import java.sql.*;
 public class DemoCRUDOperations {
 
     // 1. define connection params to db
-    final static String URL = "jdbc:postgresql://IP:5432/test";
+    final static String URL = "jdbc:postgresql://54.93.65.5:5432/QA6_Teodora";
     final static String USERNAME = "fasttrackit_dev";
     final static String PASSWORD = "fasttrackit_dev";
 
@@ -24,7 +24,7 @@ public class DemoCRUDOperations {
         System.out.println("Hello database users! We are going to call DB from Java");
         try {
             //demo CRUD operations
-            demoCreate();
+            demoCreate("teo","teo1",1234,1990);
             demoRead();
             demoUpdate();
             demoDelete();
@@ -37,7 +37,7 @@ public class DemoCRUDOperations {
 
     }
 
-    private static void demoCreate() throws SQLException, ClassNotFoundException {
+    private static void demoCreate(String authorInput, String titleInput, Integer isbnInput, Integer publishingYearInput) throws SQLException, ClassNotFoundException {
 
         // 1. load the driver
         Class.forName("org.postgresql.Driver");
@@ -46,9 +46,11 @@ public class DemoCRUDOperations {
         Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         // 3. create a query statement
-        PreparedStatement pSt = conn.prepareStatement("INSERT INTO socialuser (username, PASSWORD) VALUES (?,?)");
-        pSt.setString(1, "george");
-        pSt.setString(2, "password1");
+        PreparedStatement pSt = conn.prepareStatement("INSERT INTO bookepedia (author, title, isbn, publishingyear) VALUES (?,?,?,?)");
+        pSt.setString(1, authorInput);
+        pSt.setString(2, titleInput);
+        pSt.setInt(3, isbnInput);
+        pSt.setInt(4, publishingYearInput);
 
         // 4. execute a prepared statement
         int rowsInserted = pSt.executeUpdate();
