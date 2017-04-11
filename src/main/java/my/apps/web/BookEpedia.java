@@ -102,7 +102,6 @@ public class BookEpedia extends HttpServlet {
 
 
 
-
          /*   bookRepository.read();*/
             Integer index = 0;
             List<Book> books = bookRepository.read();

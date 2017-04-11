@@ -1,36 +1,30 @@
+<!DOCTYPE>
 <html>
 <head>
+    <title>BookEpedia</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 
-<body >
-    <div  align="center" style="width: 85%; height: 150%; background:#DCDCDC; margin: auto;">
-        <br>
-        <img src="https://henryehooper.files.wordpress.com/2014/09/antique-books-half-size-image.jpg" height="400" />
-    <div>
-    <h2 style="padding: 0;">BookEpedia</h2>
-    <div align="center" style="margin:0;padding:0;">
-        <form action="BookEpedia" method="get">
-            <input type="submit" value="Get Books" class="getBooksStyle"/>
-        </form>
+<body>
+    <div id="container">
+        <h2>BookEpedia</h2>
+        <div id="content">
+            <form action="BookEpedia" method="get">
+                <input type="submit" value="Get Books" class="getBooksStyle"/>
+            </form>
+            <form action="BookEpedia" method="post">
+                <br>
+                Author: <br>
+                <input type="text" name="author"/><br><br>
+                Title: <br><input type="text" name="title"/><br><br>
+                ISBN: <br><input type="text" name="isbn"/><br><br>
+                Publishing year:<br><input type="text" name="publishingyear"/><br><br>
+                <input type="submit" value="Submit"/>&nbsp;
+            </form>
+        </div>
     </div>
-    </div>
-   <br>
-  <div align="center" style="background:#787878;height:30%;width:40%;margin:auto;">
-    <form action="BookEpedia" method="post">
-        <br>
-        Author: <br>
-        <input type="text" name="author"/><br><br>
-        Title: <br><input type="text" name="title"/><br><br>
-        ISBN: <br><input type="text" name="isbn"/><br><br>
-        Publishing year:<br><input type="text" name="publishingyear"/><br><br>
-        <input type="submit" value="Submit"/>&nbsp;
-    </form>
-  </div>
-  </div>
-    <br><br>
 
-</body>
 </body>
 </html>
