@@ -38,7 +38,8 @@ public class BookEpedia extends HttpServlet {
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.println("<h3>BookEpedia </h3>");
+        out.println("<div id='container'>");
+        out.println("<h2>BookEpedia </h2>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("<b>" + book.toString() +  "</b><br />");
 
@@ -51,6 +52,7 @@ public class BookEpedia extends HttpServlet {
         } catch (SQLException e) {
             out.println("<div class='error'><b>Unable to write to database! " +  e.getMessage() +"<b></div>");
         }
+        out.println("</dvi>");
 
 
 
@@ -70,7 +72,7 @@ public class BookEpedia extends HttpServlet {
     }
 
     private void addGoBack(PrintWriter out) {
-        out.println("<a href='/'>Go Back</a>");
+        out.println("<a href='/' id='goBack'>Go Back</a>");
     }
 
     @Override
@@ -90,7 +92,8 @@ public class BookEpedia extends HttpServlet {
         try {
             /*out.println("<h2>Get count</h2>");
             out.println(counter);*/
-            out.println("<h3>Books...</h3>");
+            out.println("<div id='container'>");
+            out.println("<h2>All available books</h2>");
             out.println("<table>");
             out.println("<tr>");
             out.println("<th>#</th>");
@@ -126,6 +129,7 @@ public class BookEpedia extends HttpServlet {
             out.println("<div class='error'><b>Unable to write to database! " +  e.getMessage() +"<b></div>");
         }
         addGoBack(out);
+        out.println("</div>");
         out.close();
     }
 

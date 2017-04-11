@@ -11,18 +11,21 @@
     <div id="container">
         <h2>BookEpedia</h2>
         <div id="content">
-            <form action="BookEpedia" method="get">
-                <input type="submit" value="Get Books" class="getBooksStyle"/>
+            <form id="getBooks" action="BookEpedia" method="get">
+                <input type="submit" value="Get Books" />
             </form>
-            <form action="BookEpedia" method="post">
-                <br>
-                Author: <br>
-                <input type="text" name="author"/><br><br>
-                Title: <br><input type="text" name="title"/><br><br>
-                ISBN: <br><input type="text" name="isbn"/><br><br>
-                Publishing year:<br><input type="text" name="publishingyear"/><br><br>
-                <input type="submit" value="Submit"/>&nbsp;
+            <form id="addBook" action="BookEpedia" method="post">
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author"/>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title"/>
+                <label for="isbn">ISBN:</label>
+                <input type="text" name="isbn" id="isbn"/>
+                <label for="year">Publishing year:</label>
+                <input type="text" name="publishingyear" id="year"/>
+                <input type="submit" value="Submit"/>
             </form>
+            <div class="clear"></div>
         </div>
     </div>
 
