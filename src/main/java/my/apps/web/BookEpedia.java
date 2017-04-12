@@ -38,35 +38,31 @@ public class BookEpedia extends HttpServlet {
         // write results to response
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.println("<div id='container'>");
-        out.println("<h2>BookEpedia </h2>");
+
+        out.println("<head>");
+        out.println("<title>New book info</title>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
-        out.println("<b>" + book.toString() +  "</b><br />");
+        out.println("</head>");
+
+        out.println("<div id='container'>");
+        out.println("<h2>New book info</h2>");
+        out.println("<div id='bookContent'>");
 
         try {
-            out.println("<h3>New book...</h3>");
             bookRepository.insert(book);
-            out.println("<b>" + book.toString() +  "</b><br />");
+            out.println("<p><strong>Author: </strong>" + book.getAuthor() + "</p>");
+            out.println("<p><strong>Title: </strong>" + book.getTitle() + "</p>");
+            out.println("<p><strong>ISBN: </strong>" + book.getIsbn() + "</p>");
+            out.println("<p><strong>Publishing Year: </strong>" + book.getPublishingyear() + "</p>");
         } catch (ClassNotFoundException e) {
             out.println("<div class='error'><b>Unable initialize database connection<b></div>");
         } catch (SQLException e) {
             out.println("<div class='error'><b>Unable to write to database! " +  e.getMessage() +"<b></div>");
         }
-        out.println("</dvi>");
-
-
-
-        /*out.println("author - <b>" + book + "</b><br/>");
-        out.println("title - <b>" + Title + "</b><br/>");
-        out.println("isbn - <b>" + ISBN + "</b><br/>");
-        out.println("publishingyear - <b>" + PublishingYear + "</b><br/>");*/
-
-       //out.println("<a href='/'>Go Back</a>");
+        out.println("</div>");
 
         addGoBack(out);
-
-
-        // finished writing, send to browser
+        out.println("</div>");
         out.close();
 
     }
@@ -82,8 +78,7 @@ public class BookEpedia extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         out.println("<head>");
-        //out.println("<title> Get count </title>");
-        out.println("<title> Books </title>");
+        out.println("<title> All available books </title>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">");
         out.println("</head>");
 /*
